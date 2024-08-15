@@ -14,13 +14,15 @@ namespace Dip.Page
         private static string OneOffPaymentButtonXPath = "//button[@class=\"btn btn-default license__btn\"]";
         private static string PayPalButtonXPath = "//div[@role=\"link\" and @aria-label=\"PayPal\"]";
         private static string DebetCardButtonXPath = "//div[@role=\"link\"and @aria-label=\"Дебетовая или кредитная карта\"]";
+        private static string iframe = "//div[@class=\"license__payment-type-container\"]//iframe";
+        private static string iframe2 = "//div[@class=\"license__payment-type-container ng-hide\"]//iframe";
 
         public LicensePage(WebDriver driver) : base(driver) { }
         public static bool IsPageOpen()
         {
             return Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(title))).Displayed;
         }
-        public static string PayPalPayment()
+        public static string PayPalPaymentSub()
         {
             Driver.GetDriver().SwitchTo().Frame(Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath("//iframe[@class=\"component-frame visible\"]"))));
             Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(PayPalButtonXPath))).Click();
@@ -29,12 +31,30 @@ namespace Dip.Page
             string url = new Uri(Driver.GetDriver().Url).Host;
             return url;
         }
-        public static string DebetCardPayment()
+        public static string DebetCardPaymentSub()
         {
             Driver.GetDriver().SwitchTo().Frame(Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath("//iframe[@class=\"component-frame visible\"]"))));
             Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(DebetCardButtonXPath))).Click();
             Driver.GetDriver().SwitchTo().Window(Driver.GetDriver().WindowHandles.Last());
             Thread.Sleep(5000);
+            string url = new Uri(Driver.GetDriver().Url).Host;
+            return url;
+        }
+        public static string PayPalPaymentOneOff()
+        {
+            Driver.GetDriver().SwitchTo().Frame(Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(iframe))));
+            Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(PayPalButtonXPath))).Click();
+            Driver.GetDriver().SwitchTo().Window(Driver.GetDriver().WindowHandles.Last());
+            Thread.Sleep(10000);
+            string url = new Uri(Driver.GetDriver().Url).Host;
+            return url;
+        }
+        public static string DebetCardPaymentOneOff()
+        {
+            Driver.GetDriver().SwitchTo().Frame(Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(iframe))));
+            Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(DebetCardButtonXPath))).Click();
+            Driver.GetDriver().SwitchTo().Window(Driver.GetDriver().WindowHandles.Last());
+            Thread.Sleep(10000);
             string url = new Uri(Driver.GetDriver().Url).Host;
             return url;
         }

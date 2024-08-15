@@ -1,8 +1,11 @@
 ﻿using Dip.Factories;
+using Microsoft.Graph.Models;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System.Security.Cryptography;
+using System.Xml.Linq;
 namespace Dip.Page
 {
     internal class EditPage:BasePage
@@ -17,13 +20,8 @@ namespace Dip.Page
         //tags 
         private const string addNewTagsXPath = "//*[@id=\"new-tag\"]";
         private const string buttonNewTagXPath = "//*[@id=\"assign-new-tag\"]";
-        private const string assigTagXPath = "//*[@class=\"assigned-tags clearfix\"]";
-        //работа с редактором текста 
-        private const string link_iconXPath = "//*[@id=\"cke_31\"]";
-        private const string unlink_iconXPath = "//*[@id=\"cke_33\"]";
-        private const string link_modalXPath = "//input[@class='cke_dialog_ui_input_text' and @id='cke_450_textInput']";
-        private const string link_OKXPath = "//*[@id=\"cke_429_uiElement\"]";
-        //
+        private const string assigTagXPath = "//*[@class=\"tag-wrapper ng-scope\"]";
+       //
         private const string expandToolBarXPath  = "//*[@id=\"cke_1376\" and @title = \"Expand toolbar\"]";
         private const string reduceToolBarXPath  = "//*[@id=\"cke_1376\" and @title = \"Reduce toolbar\"]";
         //save
@@ -34,7 +32,12 @@ namespace Dip.Page
         private const string imageIconTextXPath = "//*[@id=\"cke_70_textInput\"]";
         private const string uploadImageXPath = "//input[@type=\"file\" and @name = \"txtUpload\"]";
         private const string modalWindowXPath = "//iframe[@class=\"cke_dialog_ui_input_file\"]";
-        //calendar
+        //editsection
+        private const string BoldtxtXPath= "//a[@title=\"Bold (Ctrl+B)\"]";
+        private const string ItalictxtXPath= "//a[@title=\"Italic (Ctrl+I)\"]";
+        private const string UnderlinetxtXPath= "//a[@title=\"Underline (Ctrl+U)\"]";
+        private const string NumberedListtxtXPath= "//a[@title=\"Insert/Remove Numbered List\"]";
+        
         public EditPage(IWebDriver driver):base(driver) { }
         //проверка, что кнопка есть на странице
         public static bool IsPageOpen()
@@ -85,7 +88,6 @@ namespace Dip.Page
         //работа с текстом
         public static void GetPictureFileDesktop(string File)
         {
-            string HashFile = Base64SHA256(File);
             Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(imageIconXPath))).Click();
             Driver.GetDriver().SwitchTo().Frame(Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(modalWindowXPath))));
             if (Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(uploadImageXPath))).Displayed)
@@ -104,32 +106,46 @@ namespace Dip.Page
                  .SendKeys(url);
             Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(imageIconModalXPath))).Click();         
         }
-        public static void Save()
-        {
-            Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(SaveXPath))).Click(); 
-        }
-        public static void AddLink(string url)
-        {
-            Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementToBeClickable(By.XPath(link_iconXPath))).Click();
-            Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(link_modalXPath))).SendKeys(url);
-            Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementToBeClickable(By.XPath(link_OKXPath))).Click();
-        }
-
+        public static void Save()=>
+          Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(SaveXPath))).Click();  
        public static void Calendar()
         {
 
         }
-        static string Base64SHA256(string filePath)
-        {
-            var hasher = SHA256.Create();
-            byte[] hashValue;
-            using (Stream s = File.OpenRead(filePath))
-            {
-                hashValue = hasher.ComputeHash(s);
-            }
-            return Convert.ToBase64String(hashValue);
-        }
+        public static void ClickBold()=>       
+            Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(BoldtxtXPath))).Click();
+        
+        public static void ClickItalic()=>     
+            Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(ItalictxtXPath))).Click();
+        
+        public static void ClickUnderline()=>
+            Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(UnderlinetxtXPath))).Click();
+        
+        public static void ClickNumberList()=>        
+            Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(NumberedListtxtXPath))).Click();
+        
+        public static void ClickBulletList()=>
+            Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath("//a[@title=\"Insert/Remove Bulleted List\"]"))).Click();
+        
+        public static void ClickDecreaseList()=>        
+            Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath("//a[@title=\"Decrease Indent\"]"))).Click();
+        
+        public static void ClickInsertSpecialEmodji() =>
+            Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath("//a[@title=\"Insert Special Character\"]"))).Click();
+        public static void InsertEmodji()=>
+            Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath("//td[@class=\"cke_dark_background cke_centered\"]"))).Click();
+        public static void ExpandClick() =>
+            Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath("//a[@title=\"Expand toolbar\"]"))).Click();
+        public static void SmileyOpen() =>
+            Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath("//a[@title = \"Smiley\"]"))).Click();
+        public static void ExitEdit() => 
+            Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@title=\"Exit edit mode\"]"))).Click();
+
+        
+
+
 
 
     }
+
 }

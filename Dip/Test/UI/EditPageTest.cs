@@ -29,7 +29,7 @@ namespace Dip.Test.UI
         public void TestAddNewTags(string name, string pass, string text, string new_tag)
         {
             text = "Добавляем новый тег";
-            new_tag = "895";
+            new_tag = "2";
             LoginPage.Open();
             LoginPage.Login(name, pass);
             DiaryPage.NewNotesFromDiaryClick();
@@ -44,7 +44,7 @@ namespace Dip.Test.UI
         public void TestFindTegsWhichAlreadyExist(string name, string pass, string text, string new_tag)
         {
             text = "Поиск";
-            new_tag = "78";
+            new_tag = "2";
             LoginPage.Open();
             LoginPage.Login(name, pass);
             DiaryPage.NewNotesFromDiaryClick();
@@ -117,6 +117,75 @@ namespace Dip.Test.UI
             Assert.IsTrue(EditPage.IsPageOpen());
             EditPage.EditNotes(text);
             EditPage.DeleteNotes();
+            Assert.IsTrue(EditPage.IsPageOpen());
+        }
+        [AllureOwner("Терентьева Анна")]
+        [AllureName("Редактирование текстовой заметки из дневника.")]
+        [Description("Здесь происходит изменение текста в редакторе: жирный, курсив, подчеркнутый. ")]
+        [TestCase("terenteva1999@yandex.ru", "123456Ana")]
+        public void EditNotesText(string name, string pass)
+        {
+            LoginPage.Open();
+            LoginPage.Login(name, pass);
+            DiaryPage.NewNotesFromDiaryClick();
+            Assert.IsTrue(EditPage.IsPageOpen());
+            EditPage.EditNotes("Тут должен быть ");
+            EditPage.ClickBold();
+            EditPage.EditNotes("текст, а затем ");
+            EditPage.ClickItalic();
+            EditPage.EditNotes("курсивный текст, а потом еще добавить вот такой: ");
+            EditPage.ClickUnderline();
+            EditPage.EditNotes("подчеркнутый!");
+            EditPage.BackHome();
+            Assert.IsTrue(EditPage.IsPageOpen());
+        }
+        [AllureOwner("Терентьева Анна")]
+        [AllureName("Редактирование текстовой заметки из дневника.")]
+        [Description("Здесь происходит изменение текста в редакторе: жирный, курсив, подчеркнутый. ")]
+        [TestCase("terenteva1999@yandex.ru", "123456Ana")]
+        public void EditNotesTextWithListed(string name, string pass)
+        {
+            LoginPage.Open();
+            LoginPage.Login(name, pass);
+            DiaryPage.NewNotesFromDiaryClick();
+            Assert.IsTrue(EditPage.IsPageOpen());
+            EditPage.EditNotes("Создаем нумерованный список:");
+            EditPage.AddNewLine();
+            EditPage.ClickNumberList();
+            EditPage.EditNotes("First line");
+            EditPage.AddNewLine();
+            EditPage.EditNotes("Second line");
+            EditPage.AddNewLine();
+            EditPage.EditNotes("Third line");
+            EditPage.ClickDecreaseList();
+            EditPage.EditNotes("\nТеперь создаем маркированный список: ");
+            EditPage.AddNewLine();
+            EditPage.ClickBulletList();
+            EditPage.EditNotes("First line");
+            EditPage.AddNewLine();
+            EditPage.EditNotes("Second line");
+            EditPage.AddNewLine();
+            EditPage.EditNotes("Third line");
+            EditPage.ClickDecreaseList();
+            EditPage.BackHome();
+            Assert.IsTrue(EditPage.IsPageOpen());
+        }
+        [AllureOwner("Терентьева Анна")]
+        [AllureName("Редактирование текстовой заметки из дневника.")]
+        [Description("Здесь происходит изменение текста в редакторе: жирный, курсив, подчеркнутый. ")]
+        [TestCase("terenteva1999@yandex.ru", "123456Ana")]
+        public void EmodjiTesting(string name, string pass)
+        {
+            LoginPage.Open();
+            LoginPage.Login(name, pass);
+            DiaryPage.NewNotesFromDiaryClick();
+            Assert.IsTrue(EditPage.IsPageOpen());
+            EditPage.EditNotes("Смайликииии : ");
+            EditPage.AddNewLine();
+            EditPage.ExpandClick();
+            EditPage.SmileyOpen();
+            EditPage.InsertEmodji();
+            EditPage.Save();
             Assert.IsTrue(EditPage.IsPageOpen());
         }
     }

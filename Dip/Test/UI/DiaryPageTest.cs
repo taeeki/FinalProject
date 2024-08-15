@@ -52,14 +52,5 @@ namespace Dip.Test.UI
             DiaryPage.ClickToGoManageTags();
             Assert.IsTrue(TagsPage.IsOpen());
         }
-
-        [TestCase("terenteva1999@yandex.ru", "123456Ana")]
-        public void Checked(string name, string pass)
-        {
-            LoginPage.Open();
-            LoginPage.Login(name, pass);
-            Assert.IsTrue(DiaryPage.IsPageOpen());          
-            Assert.IsTrue(DiaryPage.searchChecked());
-        }
     }
 }

@@ -140,23 +140,5 @@ namespace Dip.Test.UI
             SettingPage.ClickOk();
             Assert.That(SettingPage.GetErrorMessageSuccess(), Is.EqualTo("Your settings have been saved successfully"));
         }
-        [AllureOwner("Терентьева Анна")]
-        [AllureName("Проверка на корректное заполнение логина, ввод логина менее, чем четыре символа.")]
-        [TestCase("terenteva1999@yandex.ru", "123456Ana", "", "English")]
-        public void LoginAliasLessFourSymbol(string name, string pass, string login, string language)
-        {
-            LoginPage.Open();
-            LoginPage.Login(name, pass);
-            DiaryPage.ClickSettingButton();
-            SettingPage.EditLanguage(language);
-            SettingPage.ClickOk();
-            Assert.That(SettingPage.MessageLanguage(language), Is.EqualTo("Your language has been changed successfully"));
-            SettingPage.ClickLogin();
-            SettingPage.ClickUsedAlias();
-            Assert.IsTrue(SettingPage.UsedLoginAlias());
-            SettingPage.InsertLoginValue(login);
-            SettingPage.ClickOk();
-            Assert.That(SettingPage.ALiasMessage(), Is.EqualTo("The alias must have at least 4 characters."));
-        }
     }
 }

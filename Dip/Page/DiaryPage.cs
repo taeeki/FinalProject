@@ -80,12 +80,7 @@ namespace Dip.Page
             else
                 return false;
         }
-        
-        public static bool searchChecked()
-        {
-            Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath("//input[@ng-change=\"updateSelectionState()\"][1]"))).Click();
-            return Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath("//input[@ng-change=\"updateSelectionState()\"][1]"))).Selected;
-        }
+      
         public static void CalendarClick()
         {
             Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(calendarXPath))).Click();

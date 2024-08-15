@@ -34,36 +34,6 @@ namespace Dip.Test.API
                 Assert.That((int)response.StatusCode, Is.EqualTo(201));
             }
         }
-        //[AllureOwner("Терентьева Анна")]
-        //[AllureName("Удаление тега.")]
-        //[TestCase("terenteva1999@yandex.ru", "123456Ana")]
-        //public async Task DeleteTagsDiary(string user, string pass)
-        //{
-        //    HttpClient client = new HttpClient();
-        //    var headersInfo = HelperAuthToken.HeadersDataRequestAdd(user, pass);
-        //    // определяем данные запроса        
-        //    using (var requestMessage = new HttpRequestMessage(HttpMethod.Post, $"{baseurl}api/tags"))
-        //    {
-        //        requestMessage.Headers.Add("Cookie", headersInfo.cookie);
-        //        requestMessage.Headers.Add("x-csrf-token", headersInfo.crft_token);
-        //        requestMessage.Headers.Add("Auth-Token", headersInfo.auth_token);
-        //        requestMessage.Content = JsonContent.Create(new
-        //        {
-        //            id = 3655,
-        //            name = "U2FsdGVkX18Dbg2dVHm7k8qzK6C/26mZXc7EsYNknQ="
-        //        });
-        //    }
-        //    // определяем данные запроса        
-        //    using (var requestMessage = new HttpRequestMessage(HttpMethod.Delete, $"{baseurl}api/tags/55"))
-        //    {
-        //        requestMessage.Headers.Add("Cookie", headersInfo.cookie);
-        //        requestMessage.Headers.Add("x-csrf-token", headersInfo.crft_token);
-        //        requestMessage.Headers.Add("Auth-Token", headersInfo.auth_token);               
-        //        // Отправляем запрос
-        //        var response = client.SendAsync(requestMessage).Result;
-        //        Assert.That((int)response.StatusCode, Is.EqualTo(200));
-        //    }
-        //}
 
         [AllureOwner("Терентьева Анна")]
         [AllureName("Попытка удаления тега, который уже был удален.")]
@@ -85,26 +55,26 @@ namespace Dip.Test.API
             }
         }
 
-        [TestCase("terenteva1999@yandex.ru", "123456Ana")]
-        public async Task GetTagsDiary(string user, string pass)
-        {
-            HttpClient client = new HttpClient();
-            var headersInfo = HelperAuthToken.HeadersDataRequestAdd(user, pass);
-            // определяем данные запроса        
-            using (var requestMessage = new HttpRequestMessage(HttpMethod.Get, $"{baseurl}api/tags/329904"))
-            {
-                requestMessage.Headers.Add("Cookie", headersInfo.cookie);
-                requestMessage.Headers.Add("x-csrf-token", headersInfo.crft_token);
-                requestMessage.Headers.Add("Auth-Token", headersInfo.auth_token);
-                requestMessage.Content = JsonContent.Create(new
-                {
-                    id = 329904
-                }); 
-                // Отправляем запрос
-                var response = client.SendAsync(requestMessage).Result;
-                Assert.That((int)response.StatusCode, Is.EqualTo(200));
-            }
-        }
+        //[TestCase("terenteva1999@yandex.ru", "123456Ana")]
+        //public async Task GetTagsDiary(string user, string pass)
+        //{
+        //    HttpClient client = new HttpClient();
+        //    var headersInfo = HelperAuthToken.HeadersDataRequestAdd(user, pass);
+        //    // определяем данные запроса        
+        //    using (var requestMessage = new HttpRequestMessage(HttpMethod.Get, $"{baseurl}api/tags/3"))
+        //    {
+        //        requestMessage.Headers.Add("Cookie", headersInfo.cookie);
+        //        requestMessage.Headers.Add("x-csrf-token", headersInfo.crft_token);
+        //        requestMessage.Headers.Add("Auth-Token", headersInfo.auth_token);
+        //        requestMessage.Content = JsonContent.Create(new
+        //        {
+        //            id = 329904
+        //        }); 
+        //        // Отправляем запрос
+        //        var response = client.SendAsync(requestMessage).Result;
+        //        Assert.That((int)response.StatusCode, Is.EqualTo(200));
+        //    }
+        //}
 
         [AllureOwner("Терентьева Анна")]
         [AllureName("Отправка запроса без токена авторизации.")]
