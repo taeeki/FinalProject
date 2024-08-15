@@ -35,7 +35,6 @@ namespace Dip.Page
         private const string uploadImageXPath = "//input[@type=\"file\" and @name = \"txtUpload\"]";
         private const string modalWindowXPath = "//iframe[@class=\"cke_dialog_ui_input_file\"]";
         //calendar
-        private const string calendarXPath = "//input[@id=\"datepicker\"]";
         public EditPage(IWebDriver driver):base(driver) { }
         //проверка, что кнопка есть на странице
         public static bool IsPageOpen()

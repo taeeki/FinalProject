@@ -22,6 +22,8 @@ namespace Dip.Page
         //Управление тэгами
         private static string goToManageTagsXPath = "//a[@href=\"#/tags\"]";
         private static string listNotesDataXPath = "//div[@class=\" body\" and @ng-bind-html=\"entry.body\"]";
+        //календарь
+        private const string calendarXPath = "//input[@id=\"datepicker\"]";
 
 
         public DiaryPage(IWebDriver driver):base(driver) { }
@@ -83,6 +85,14 @@ namespace Dip.Page
         {
             Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath("//input[@ng-change=\"updateSelectionState()\"][1]"))).Click();
             return Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath("//input[@ng-change=\"updateSelectionState()\"][1]"))).Selected;
+        }
+        public static void CalendarClick()
+        {
+            Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(calendarXPath))).Click();
+        }
+        public static void SetDateValue()
+        {
+            Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(calendarXPath))).Click();
         }
     }
 }

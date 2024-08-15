@@ -27,7 +27,6 @@ namespace Dip.Page
             Driver.GetDriver().SwitchTo().Window(Driver.GetDriver().WindowHandles.Last());
             Thread.Sleep(5000);
             string url = new Uri(Driver.GetDriver().Url).Host;
-            Driver.GetDriver().SwitchTo().DefaultContent();
             return url;
         }
         public static string DebetCardPayment()

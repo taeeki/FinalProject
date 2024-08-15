@@ -1,11 +1,11 @@
-﻿using Allure.NUnit;
+﻿using Allure.Net.Commons;
+using Reqnroll;
 using Dip.Factories;
 using Dip.Page;
 namespace Dip.Test.UI
 
 {
     //    [NonParallelizable]
-    [AllureNUnit]
     internal class BasePageTest
     {
         [SetUp]

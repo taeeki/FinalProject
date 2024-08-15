@@ -1,9 +1,13 @@
 ﻿using Dip.Page;
+using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
 
 namespace Dip.Test.UI
 {
+    [AllureNUnit] 
     internal class DiaryPageTest : BasePageTest
     {
+        [AllureName("Выход из аккаунта.")]
         [TestCase("terenteva1999@yandex.ru", "123456Ana")]
         public void ClickLogOut(string user, string pass)
         {
@@ -13,6 +17,7 @@ namespace Dip.Test.UI
             DiaryPage.ClickLogOutButton();
             Assert.IsTrue(LoginPage.IsPageOpen());
         }
+        [AllureName("Переход в настройки.")]
         [TestCase("terenteva1999@yandex.ru", "123456Ana")]
         public void ClickSetting(string user, string pass)
         {
@@ -22,7 +27,7 @@ namespace Dip.Test.UI
             DiaryPage.ClickSettingButton();
             Assert.IsTrue(SettingPage.IsPageOpen());
         }
-
+        [AllureName("Поиск информации по сайту с заданным критерием.")]
         [TestCase("terenteva1999@yandex.ru", "123456Ana", "utyryr")]
         [TestCase("terenteva1999@yandex.ru", "123456Ana", "World")]
         public void SearchTextFromDiary(string name, string pass, string text)
@@ -37,7 +42,7 @@ namespace Dip.Test.UI
                 Assert.IsFalse(false, "Поиск произведен, по такому поиску есть записи.");
             DiaryPage.ResetSearch();
         }
-
+        [AllureName("Настройки тегов в дневнике.")]
         [TestCase("terenteva1999@yandex.ru", "123456Ana")]
         public void GoToPageTags(string name, string pass)
         {
@@ -47,7 +52,6 @@ namespace Dip.Test.UI
             DiaryPage.ClickToGoManageTags();
             Assert.IsTrue(TagsPage.IsOpen());
         }
-
 
         [TestCase("terenteva1999@yandex.ru", "123456Ana")]
         public void Checked(string name, string pass)
