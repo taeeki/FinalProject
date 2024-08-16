@@ -15,7 +15,6 @@ namespace Dip.Page
         private static string PayPalButtonXPath = "//div[@role=\"link\" and @aria-label=\"PayPal\"]";
         private static string DebetCardButtonXPath = "//div[@role=\"link\"and @aria-label=\"Дебетовая или кредитная карта\"]";
         private static string iframe = "//div[@class=\"license__payment-type-container\"]//iframe";
-        private static string iframe2 = "//div[@class=\"license__payment-type-container ng-hide\"]//iframe";
 
         public LicensePage(WebDriver driver) : base(driver) { }
         public static bool IsPageOpen()
@@ -24,7 +23,7 @@ namespace Dip.Page
         }
         public static string PayPalPaymentSub()
         {
-            Driver.GetDriver().SwitchTo().Frame(Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath("//iframe[@class=\"component-frame visible\"]"))));
+            Driver.GetDriver().SwitchTo().Frame(Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(iframe))));
             Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(PayPalButtonXPath))).Click();
             Driver.GetDriver().SwitchTo().Window(Driver.GetDriver().WindowHandles.Last());
             Thread.Sleep(5000);
@@ -33,7 +32,7 @@ namespace Dip.Page
         }
         public static string DebetCardPaymentSub()
         {
-            Driver.GetDriver().SwitchTo().Frame(Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath("//iframe[@class=\"component-frame visible\"]"))));
+            Driver.GetDriver().SwitchTo().Frame(Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(iframe))));
             Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(DebetCardButtonXPath))).Click();
             Driver.GetDriver().SwitchTo().Window(Driver.GetDriver().WindowHandles.Last());
             Thread.Sleep(5000);
@@ -60,6 +59,7 @@ namespace Dip.Page
         }
         public static void ClickOneOffPay()
         {
+            
             Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(OneOffPaymentButtonXPath))).Click();
         }
     }

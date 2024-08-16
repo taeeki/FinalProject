@@ -81,6 +81,7 @@ namespace Dip.Page
                 return false;
         }
       
+       
         public static void CalendarClick()
         {
             Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(calendarXPath))).Click();
