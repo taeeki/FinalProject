@@ -28,5 +28,39 @@ namespace Dip.Test.API
             var headersinfo = HelperAuthToken.HeadersDataRequestAdd(user, pass);
             Assert.IsNull(headersinfo.auth_token);
         }
+        [AllureOwner("Терентьева Анна")]
+        [AllureName("Отправка запроса на авторизацию без заголовков запроса.")]
+        [TestCase("terenteva1999@yandex.ru", "123456Ana")]
+        public async Task PostDataWithoutHeaders(string user, string pass)
+        {
+            HttpClient client = new HttpClient();
+            var headersInfo = HelperAuthToken.HeadersDataRequestAdd(user, pass);
+            // определяем данные запроса        
+            using (var requestMessage = new HttpRequestMessage(HttpMethod.Post, "https://monkkee.com/api/authentication"))
+            {
+                // Отправляем запрос
+                var response = client.SendAsync(requestMessage).Result;
+                Assert.That((int)response.StatusCode, Is.EqualTo(422));
+            }
+        }
+
+        [AllureOwner("Терентьева Анна")]
+        [AllureName("Отправка запроса на авторизацию без токена авторизации (without Auth_Token).")]
+        [TestCase("terenteva1999@yandex.ru", "123456Ana")]
+        public async Task PostDataWithoutTokenAuth(string user, string pass)
+        {
+            HttpClient client = new HttpClient();
+            var headersInfo = HelperAuthToken.HeadersDataRequestAdd(user, pass);
+            // определяем данные запроса        
+            using (var requestMessage = new HttpRequestMessage(HttpMethod.Post, "https://monkkee.com/api/authentication"))
+            {
+                requestMessage.Headers.Add("Cookie", headersInfo.cookie);
+                requestMessage.Headers.Add("x-csrf-token", headersInfo.crft_token);
+
+                // Отправляем запрос
+                var response = client.SendAsync(requestMessage).Result;
+                Assert.That((int)response.StatusCode, Is.EqualTo(401));
+            }
+        }
     }
 }
