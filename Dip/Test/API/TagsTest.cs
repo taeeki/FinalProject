@@ -2,7 +2,6 @@
 using NUnit.Allure.Attributes;
 using NUnit.Allure.Core;
 using System.Net.Http.Json;
-
 namespace Dip.Test.API
 {
     [TestFixture]
@@ -54,27 +53,6 @@ namespace Dip.Test.API
                 Assert.That((int)response.StatusCode, Is.EqualTo(404));
             }
         }
-
-        //[TestCase("terenteva1999@yandex.ru", "123456Ana")]
-        //public async Task GetTagsDiary(string user, string pass)
-        //{
-        //    HttpClient client = new HttpClient();
-        //    var headersInfo = HelperAuthToken.HeadersDataRequestAdd(user, pass);
-        //    // определяем данные запроса        
-        //    using (var requestMessage = new HttpRequestMessage(HttpMethod.Get, $"{baseurl}api/tags/3"))
-        //    {
-        //        requestMessage.Headers.Add("Cookie", headersInfo.cookie);
-        //        requestMessage.Headers.Add("x-csrf-token", headersInfo.crft_token);
-        //        requestMessage.Headers.Add("Auth-Token", headersInfo.auth_token);
-        //        requestMessage.Content = JsonContent.Create(new
-        //        {
-        //            id = 329904
-        //        }); 
-        //        // Отправляем запрос
-        //        var response = client.SendAsync(requestMessage).Result;
-        //        Assert.That((int)response.StatusCode, Is.EqualTo(200));
-        //    }
-        //}
 
         [AllureOwner("Терентьева Анна")]
         [AllureName("Отправка запроса без токена авторизации.")]

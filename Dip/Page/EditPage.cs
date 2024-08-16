@@ -14,17 +14,12 @@ namespace Dip.Page
         private const string textEditorXPath = "//*[@id=\"editable\"]";
         private const string backXpath = "//*[@id=\"back-to-overview\"]";
         private const string deleteButtonXPath = "//*[@id=\"delete-entry\"]";
-        private const string findTabXPath = "//*[@id=\"appendedInputButton\"]";
         //поиск по дневнику
         private static string resultTextResearchXPath = "//*[@class='entry']/*[@class=' body' and contains(text(),'%s')]";
         //tags 
         private const string addNewTagsXPath = "//*[@id=\"new-tag\"]";
         private const string buttonNewTagXPath = "//*[@id=\"assign-new-tag\"]";
         private const string assigTagXPath = "//*[@class=\"tag-wrapper ng-scope\"]";
-       //
-        private const string expandToolBarXPath  = "//*[@id=\"cke_1376\" and @title = \"Expand toolbar\"]";
-        private const string reduceToolBarXPath  = "//*[@id=\"cke_1376\" and @title = \"Reduce toolbar\"]";
-        //save
         private const string SaveXPath = "//a[@href=\"#\" and @class=\"cke_button cke_button__savetoggle cke_button_off cke_button_disabled\"]";
         //картинки
         private const string imageIconXPath = "//a[@title=\"Image\"]";
@@ -45,7 +40,8 @@ namespace Dip.Page
             return Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(blockWriteXPath))).Displayed;
         }
         //редактирование записи
-        public static void EditNotes(string note) => Driver.GetDriver().FindElement((By.XPath(textEditorXPath))).SendKeys(note);
+        public static void EditNotes(string note) => 
+            Driver.GetDriver().FindElement((By.XPath(textEditorXPath))).SendKeys(note);
         //возврат на страницу заметок
         public static void BackHome() => 
             Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(backXpath))).Click();
@@ -77,14 +73,13 @@ namespace Dip.Page
         {
             return Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(assigTagXPath))).Text;
         }
-      //  Получение найденных записей
+       //  Получение найденных записей
         public int GetSearchedEntries(string textToSearch)
         {
             By searchByTextResult = By.XPath(string.Format(resultTextResearchXPath, textToSearch));
             return Driver.GetDriver().FindElements(searchByTextResult).Count;
         }
-        //если ничего не найдено, поиск сообщения
-
+        
         //работа с текстом
         public static void GetPictureFileDesktop(string File)
         {
@@ -132,20 +127,18 @@ namespace Dip.Page
         
         public static void ClickInsertSpecialEmodji() =>
             Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath("//a[@title=\"Insert Special Character\"]"))).Click();
+
         public static void InsertEmodji()=>
             Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath("//td[@class=\"cke_dark_background cke_centered\"]"))).Click();
+
         public static void ExpandClick() =>
             Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath("//a[@title=\"Expand toolbar\"]"))).Click();
+
         public static void SmileyOpen() =>
             Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath("//a[@title = \"Smiley\"]"))).Click();
+
         public static void ExitEdit() => 
             Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@title=\"Exit edit mode\"]"))).Click();
-
-        
-
-
-
-
     }
 
 }
