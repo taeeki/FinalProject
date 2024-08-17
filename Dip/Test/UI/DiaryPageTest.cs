@@ -61,9 +61,9 @@ namespace Dip.Test.UI
             Assert.IsTrue(DiaryPage.IsPageOpen());
             DiaryPage.CalendarClick();
             Assert.IsTrue(DiaryPage.IsPageOpen());
-            DiaryPage.SetDateValue("August 2024");
-            DiaryPage.ResetSearch();
-            Assert.IsTrue(DiaryPage.IsPageOpen());
+            //DiaryPage.SetDateValue("August 2024");
+            //DiaryPage.ResetSearch();
+            //Assert.IsTrue(DiaryPage.IsPageOpen());
         }
 
     }

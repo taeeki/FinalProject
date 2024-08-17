@@ -85,13 +85,13 @@ namespace Dip.Page
         {
             Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(calendarXPath))).Click();
         }
-        public static void SetDateValue(string name)
-        {
-            while(!Driver.GetDriver().FindElement(By.XPath("//table[@class=\" table-condensed\"]//th[@class=\"switch\"]")).Text.Contains($"{name}"))
-            {
-                Driver.GetDriver().FindElement(By.XPath("//table[@class=\" table-condensed\"]//th[@class=\"next\"]")).Click();
-            }
-        }
+        //public static void SetDateValue(string name)
+        //{
+        //    while(!Driver.GetDriver().FindElement(By.XPath("//table[@class=\" table-condensed\"]//th[@class=\"switch\"]")).Text.Contains($"{name}"))
+        //    {
+        //        Driver.GetDriver().FindElement(By.XPath("//table[@class=\" table-condensed\"]//th[@class=\"next\"]")).Click();
+        //    }
+        //}
         public static void ResetDateSearch()=>
             Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath("//a[@id=\"reset-search\"]"))).Click();
     }
