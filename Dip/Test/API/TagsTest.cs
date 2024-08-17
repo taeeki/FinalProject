@@ -12,6 +12,7 @@ namespace Dip.Test.API
 
         [AllureOwner("Терентьева Анна")]
         [AllureName("Отправка данных о новом теге методом Post.")]
+        [AllureSuite("Тестирование запросов авторизации в API.")]
         [TestCase("terenteva1999@yandex.ru", "123456Ana")]
         public async Task PostTagsDiary(string user, string pass)
         {
@@ -58,7 +59,6 @@ namespace Dip.Test.API
         [AllureName("Отправка запроса без токена авторизации.")]
         [TestCase("", "")]
         [TestCase("terenteva@open.ru", "11111")]
-
         public async Task NotAuthDataPost(string user, string pass)
         {
             HttpClient client = new HttpClient();
