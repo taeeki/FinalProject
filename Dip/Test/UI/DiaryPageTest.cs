@@ -52,7 +52,7 @@ namespace Dip.Test.UI
             DiaryPage.ClickToGoManageTags();
             Assert.IsTrue(TagsPage.IsOpen());
         }
-        [AllureName("Настройки тегов в дневнике.")]
+        [AllureName("Установка даты в дневнике.")]
         [TestCase("terenteva1999@yandex.ru", "123456Ana")]
         public void SetDate(string name, string pass)
         {

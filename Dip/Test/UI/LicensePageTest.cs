@@ -17,8 +17,7 @@ namespace Dip.Test.UI
             MainPage.ClickByLicense();
             LoginPage.Login(email, pass);
             Assert.IsTrue(LicensePage.IsPageOpen());
-            Assert.IsTrue(true);
-         //   Assert.That(LicensePage.PayPalPaymentSub(), Is.EqualTo("www.paypal.com"));
+            Assert.That(LicensePage.PayPalPaymentSub(), Is.EqualTo("www.paypal.com"));
         }
         [AllureName("Оформление подписки на лицензию через Дебетовую или кредитную карту.")]
         [TestCase("terenteva1999@yandex.ru", "123456Ana")]
@@ -28,8 +27,7 @@ namespace Dip.Test.UI
             MainPage.ClickByLicense();
             LoginPage.Login(email, pass);
             Assert.IsTrue(LicensePage.IsPageOpen());
-            Assert.IsTrue(true);
-          //  Assert.That(LicensePage.DebetCardPaymentSub(), Is.EqualTo("www.paypal.com"));
+            Assert.That(LicensePage.DebetCardPaymentSub(), Is.EqualTo("www.paypal.com"));
         }
         [AllureName("Оформление разовой покупки на лицензию через PayPal.")]
         [TestCase("terenteva1999@yandex.ru", "123456Ana")]
@@ -40,8 +38,7 @@ namespace Dip.Test.UI
             LoginPage.Login(email, pass);
             Assert.IsTrue(LicensePage.IsPageOpen());
             LicensePage.ClickOneOffPay();
-            Assert.IsTrue(true);
-           // Assert.That(LicensePage.PayPalPaymentOneOff(), Is.EqualTo("www.paypal.com"));
+           Assert.That(LicensePage.PayPalPaymentOneOff(), Is.EqualTo("www.paypal.com"));
         }
         [AllureName("Оформление разовой покупки на лицензию через Дебетовую или кредитную карту.")]
         [TestCase("terenteva1999@yandex.ru", "123456Ana")]
@@ -52,8 +49,7 @@ namespace Dip.Test.UI
             LoginPage.Login(email, pass);
             Assert.IsTrue(LicensePage.IsPageOpen());
             LicensePage.ClickOneOffPay();
-            Assert.IsTrue(true);
-         //   Assert.That(LicensePage.DebetCardPaymentOneOff(), Is.EqualTo("www.paypal.com"));
+            Assert.That(LicensePage.DebetCardPaymentOneOff(), Is.EqualTo("www.paypal.com"));
         }
     }
 }
