@@ -1,6 +1,7 @@
 ﻿using Dip.Factories;
 using OpenQA.Selenium;
 using SeleniumExtras.WaitHelpers;
+using System.Linq;
 
 namespace Dip.Page
 {
@@ -80,15 +81,18 @@ namespace Dip.Page
             else
                 return false;
         }
-      
-       
         public static void CalendarClick()
         {
             Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(calendarXPath))).Click();
         }
-        public static void SetDateValue()
+        public static void SetDateValue(string name)
         {
-            Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(calendarXPath))).Click();
+            while(!Driver.GetDriver().FindElement(By.XPath("//table[@class=\" table-condensed\"]//th[@class=\"switch\"]")).Text.Contains($"{name}"))
+            {
+                Driver.GetDriver().FindElement(By.XPath("//table[@class=\" table-condensed\"]//th[@class=\"next\"]")).Click();
+            }
         }
+        public static void ResetDateSearch()=>
+            Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath("//a[@id=\"reset-search\"]"))).Click();
     }
 }

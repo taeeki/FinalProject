@@ -52,5 +52,19 @@ namespace Dip.Test.UI
             DiaryPage.ClickToGoManageTags();
             Assert.IsTrue(TagsPage.IsOpen());
         }
+        [AllureName("Настройки тегов в дневнике.")]
+        [TestCase("terenteva1999@yandex.ru", "123456Ana")]
+        public void SetDate(string name, string pass)
+        {
+            LoginPage.Open();
+            LoginPage.Login(name, pass);
+            Assert.IsTrue(DiaryPage.IsPageOpen());
+            DiaryPage.CalendarClick();
+            Assert.IsTrue(DiaryPage.IsPageOpen());
+            DiaryPage.SetDateValue("October 2024");
+            DiaryPage.ResetSearch();
+            Assert.IsTrue(DiaryPage.IsPageOpen());
+        }
+
     }
 }
