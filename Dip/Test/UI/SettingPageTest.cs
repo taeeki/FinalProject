@@ -47,7 +47,7 @@ namespace Dip.Test.UI
         [AllureOwner("Терентьева Анна")]
         [AllureName("Изменение языка дневника на английский язык.")]
         [TestCase("terenteva1999@yandex.ru", "123456Ana", "English")]
-        public void SwitchLanguageEn(string name, string pass, string language)
+        public void xSwitchLanguageEn(string name, string pass, string language)
         {
             LoginPage.Open();
             LoginPage.Login(name, pass);
