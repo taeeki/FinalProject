@@ -6,13 +6,13 @@ namespace Dip.Test.API
 {
     [TestFixture]
     [AllureNUnit]
+    [AllureSuite("Тестирование запросов авторизации в API.")]
     internal class TagsTest
     {
         const string baseurl = "https://monkkee.com/";
 
         [AllureOwner("Терентьева Анна")]
         [AllureName("Отправка данных о новом теге методом Post.")]
-        [AllureSuite("Тестирование запросов авторизации в API.")]
         [TestCase("terenteva1999@yandex.ru", "123456Ana")]
         public async Task PostTagsDiary(string user, string pass)
         {
