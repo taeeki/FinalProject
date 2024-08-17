@@ -6,10 +6,12 @@ namespace Dip.Test.API
 {
     [TestFixture]
     [AllureNUnit]
+    [AllureSuite("Тестирование запросов авторизации в API.")]
     internal class LoginTest
     {
         [AllureOwner("Терентьева Анна")]
         [AllureName("Отправка данных юзера на сервер, чтобы получить токен авторизации.")]
+        [AllureSubSuite("fnfhbf")]
         [TestCase("terenteva1999@yandex.ru", "123456Ana")]
         public void PostUserCorrect(string user, string password)
         {

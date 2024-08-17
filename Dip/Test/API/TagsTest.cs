@@ -6,7 +6,6 @@ namespace Dip.Test.API
 {
     [TestFixture]
     [AllureNUnit]
-    [AllureSuite("Тестирование запросов авторизации в API.")]
     internal class TagsTest
     {
         const string baseurl = "https://monkkee.com/";
