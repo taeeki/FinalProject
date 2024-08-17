@@ -58,15 +58,12 @@ namespace Dip.Test.UI
         }
         [AllureOwner("Терентьева Анна")]
         [AllureName("Изменение почтового адреса в дневнике на тот же, что используется и сейчас.")]
-        [TestCase("terenteva1999@yandex.ru", "123456Ana", "terenteva1999@yandex.ru", "English")]
-        public void EmailChangedThisEmails(string name, string pass, string email, string language)
+        [TestCase("terenteva1999@yandex.ru", "123456Ana", "terenteva1999@yandex.ru")]
+        public void EmailChangedThisEmails(string name, string pass, string email)
         {
             LoginPage.Open();
             LoginPage.Login(name, pass);
             DiaryPage.ClickSettingButton();
-            SettingPage.EditLanguage(language);
-            SettingPage.ClickOk();
-            Assert.That(SettingPage.MessageLanguage(language), Is.EqualTo("Your language has been changed successfully"));
             SettingPage.ClickEmail();
             SettingPage.ChangeEmail(email);
             SettingPage.ClickOk();
@@ -74,15 +71,12 @@ namespace Dip.Test.UI
         }
         [AllureOwner("Терентьева Анна")]
         [AllureName("Изменение почтового адреса в дневнике на новый email. Корректный кейс.")]
-        [TestCase("terenteva1999@yandex.ru", "123456Ana", "sopovaanya@icloud.com", "English")]
-        public void EmailChangedNewEmails(string name, string pass, string email, string language)
+        [TestCase("terenteva1999@yandex.ru", "123456Ana", "sopovaanya@icloud.com")]
+        public void EmailChangedNewEmails(string name, string pass, string email)
         {
             LoginPage.Open();
             LoginPage.Login(name, pass);
             DiaryPage.ClickSettingButton();
-            SettingPage.EditLanguage(language);
-            SettingPage.ClickOk();
-            Assert.That(SettingPage.MessageLanguage(language), Is.EqualTo("Your language has been changed successfully"));
             SettingPage.ClickEmail();
             SettingPage.ChangeEmail(email);
             SettingPage.ClickOk();
@@ -90,15 +84,12 @@ namespace Dip.Test.UI
         }
         [AllureOwner("Терентьева Анна")]
         [AllureName("Изменение почтового адреса в дневнике на новый email. Некорректно заполнено поле email.")]
-        [TestCase("terenteva1999@yandex.ru", "123456Ana", "t@icloud", "English")]
-        public void EmailInvalidChange(string name, string pass, string email, string language)
+        [TestCase("terenteva1999@yandex.ru", "123456Ana", "t@icloud")]
+        public void EmailInvalidChange(string name, string pass, string email)
         {
             LoginPage.Open();
             LoginPage.Login(name, pass);
             DiaryPage.ClickSettingButton();
-            SettingPage.EditLanguage(language);
-            SettingPage.ClickOk();
-            Assert.That(SettingPage.MessageLanguage(language), Is.EqualTo("Your language has been changed successfully"));
             SettingPage.ClickEmail();
             SettingPage.ChangeEmail(email);
             SettingPage.ClickOk();
@@ -106,16 +97,13 @@ namespace Dip.Test.UI
         }
         [AllureOwner("Терентьева Анна")]
         [AllureName("Добавление логина к аккаунту и возможность входа по нему.")]
-        [TestCase("terenteva1999@yandex.ru", "123456Ana", "taeeeki", "English")]
+        [TestCase("terenteva1999@yandex.ru", "123456Ana", "taeeeki")]
 
-        public void LoginALiasIsTrue(string name, string pass, string login, string language)
+        public void LoginALiasIsTrue(string name, string pass, string login)
         {
             LoginPage.Open();
             LoginPage.Login(name, pass);
             DiaryPage.ClickSettingButton();
-            SettingPage.EditLanguage(language);
-            SettingPage.ClickOk();
-            Assert.That(SettingPage.MessageLanguage(language), Is.EqualTo("Your language has been changed successfully"));
             SettingPage.ClickLogin();
             SettingPage.ClickUsedAlias();
             Assert.IsTrue(SettingPage.UsedLoginAlias());
@@ -125,15 +113,12 @@ namespace Dip.Test.UI
         }
         [AllureOwner("Терентьева Анна")]
         [AllureName("отключение входа по логину в аккаунт.")]
-        [TestCase("terenteva1999@yandex.ru", "123456Ana", "taeeeki", "English")]
-        public void LoginALiasIsFalse(string name, string pass, string login, string language)
+        [TestCase("terenteva1999@yandex.ru", "123456Ana", "taeeeki")]
+        public void LoginALiasIsFalse(string name, string pass, string login)
         {
             LoginPage.Open();
             LoginPage.Login(name, pass);
             DiaryPage.ClickSettingButton();        
-            SettingPage.EditLanguage(language);
-            SettingPage.ClickOk();
-            Assert.That(SettingPage.MessageLanguage(language), Is.EqualTo("Your language has been changed successfully"));
             SettingPage.ClickLogin();
             SettingPage.ClickUsedAlias();
             Assert.IsTrue(!SettingPage.UsedLoginAlias());
