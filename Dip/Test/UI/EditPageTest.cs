@@ -188,5 +188,40 @@ namespace Dip.Test.UI
             EditPage.Save();
             Assert.IsTrue(EditPage.IsPageOpen());
         }
+        [AllureName("Удаление всех записей в дневнике.")]
+        [TestCase("terenteva1999@yandex.ru", "123456Ana")]
+        public void AllNotesDelete(string name, string pass)
+        {
+            LoginPage.Open();
+            LoginPage.Login(name, pass);
+            Assert.IsTrue(DiaryPage.IsPageOpen());
+            DiaryPage.CLickChecbox();
+            Assert.IsTrue(DiaryPage.EnabledDeleteButton());
+            DiaryPage.ClickDeleteAllNotes();
+            Assert.IsTrue(DiaryPage.IsPageOpen());         
+        }
+        [AllureName("Вывод на печать все заметки из дневника.")]
+        [TestCase("terenteva1999@yandex.ru", "123456Ana")]
+        public void PrinterAllNotes(string name, string pass)
+        {
+            LoginPage.Open();
+            LoginPage.Login(name, pass);
+            Assert.IsTrue(DiaryPage.IsPageOpen());
+            DiaryPage.CLickChecbox();
+            Assert.IsTrue(DiaryPage.EnabledPrinter());
+            Assert.That(DiaryPage.PrinterAllNotes(), Is.EqualTo("https://monkkee.com/print_template"));
+           }
+          [AllureName("Вывод на печать одну заметку из дневника.")]
+        [TestCase("terenteva1999@yandex.ru", "123456Ana")]
+        public void PrinterOneNotes(string name, string pass)
+        {
+            LoginPage.Open();
+            LoginPage.Login(name, pass);
+            Assert.IsTrue(DiaryPage.IsPageOpen());
+            DiaryPage.CLickChecbox();
+            Assert.IsTrue(DiaryPage.EnabledPrinter());
+            Assert.That(DiaryPage.PrinterOneNotes(), Is.EqualTo("https://monkkee.com/print_template"));
+           }
+
     }
 }

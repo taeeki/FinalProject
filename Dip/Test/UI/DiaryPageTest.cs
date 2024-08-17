@@ -65,6 +65,5 @@ namespace Dip.Test.UI
             //DiaryPage.ResetSearch();
             //Assert.IsTrue(DiaryPage.IsPageOpen());
         }
-
     }
 }

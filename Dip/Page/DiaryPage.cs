@@ -1,4 +1,5 @@
 ﻿using Dip.Factories;
+using Microsoft.Graph.Models;
 using OpenQA.Selenium;
 using SeleniumExtras.WaitHelpers;
 using System.Linq;
@@ -85,14 +86,43 @@ namespace Dip.Page
         {
             Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(calendarXPath))).Click();
         }
-        //public static void SetDateValue(string name)
-        //{
-        //    while(!Driver.GetDriver().FindElement(By.XPath("//table[@class=\" table-condensed\"]//th[@class=\"switch\"]")).Text.Contains($"{name}"))
-        //    {
-        //        Driver.GetDriver().FindElement(By.XPath("//table[@class=\" table-condensed\"]//th[@class=\"next\"]")).Click();
-        //    }
-        //}
+   
         public static void ResetDateSearch()=>
             Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath("//a[@id=\"reset-search\"]"))).Click();
+
+        public static bool EnabledDeleteButton()
+        {
+            return Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath("//a[@class=\"btn btn-default icon-btn\" and @title=\"Delete selected entries\"]"))).Enabled;
+        }
+        public static void ClickDeleteAllNotes()
+        {
+            Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath("//a[@class=\"btn btn-default icon-btn\" and @title=\"Delete selected entries\"]"))).Click();
+            Thread.Sleep(2000);
+            IAlert alert = Driver.GetDriver().SwitchTo().Alert();
+            Assert.AreEqual("Do you really want to delete the selected entries?", alert.Text);
+            alert.Accept();
+        }
+        public static void CLickChecbox()
+        {
+            Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath("//input[@class=\"ng-pristine ng-valid\" and @title =\"Select all\"]"))).Click();
+        }
+        public static bool EnabledPrinter() => 
+            Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(" //a[@class=\"btn btn-default icon-btn\" and @title=\"Print selected entries\"]"))).Enabled;
+        public static string PrinterAllNotes()
+        {
+            Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(" //a[@class=\"btn btn-default icon-btn\" and @title=\"Print selected entries\"]"))).Click();
+            Driver.GetDriver().SwitchTo().Window(Driver.GetDriver().WindowHandles.Last());
+            return (string)Driver.GetDriver().Url;
+        }
+        public static string PrinterOneNotes()
+        {
+            Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[@class=\"checkbox-wrapper\"]//input[@type=\"checkbox\"]"))).Click();
+            Thread.Sleep(1000);
+            Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath("//a[@class=\"btn btn-default icon-btn\" and @title=\"Print selected entries\"]"))).Click();
+            Driver.GetDriver().SwitchTo().Window(Driver.GetDriver().WindowHandles.Last());
+            return (string)Driver.GetDriver().Url;
+        }
+
+
     }
 }
