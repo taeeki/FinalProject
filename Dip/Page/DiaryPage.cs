@@ -3,6 +3,7 @@ using Microsoft.Graph.Models;
 using OpenQA.Selenium;
 using SeleniumExtras.WaitHelpers;
 using System.Linq;
+using static HarmonyLib.Code;
 
 namespace Dip.Page
 {
@@ -36,8 +37,16 @@ namespace Dip.Page
         }
         public static void ClickLogOutButton()
         {
-            IWebElement buton = Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(buttonLogoutXPAth)));
-            buton.Click();
+            try
+            {
+                IWebElement button = Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(buttonLogoutXPAth)));
+                button.Click();
+            }
+            catch (StaleElementReferenceException ex)
+            {
+                IWebElement button = Driver.GetWait(Driver.GetDriver()).Until(ExpectedConditions.ElementIsVisible(By.XPath(buttonLogoutXPAth)));
+                button.Click();
+            }
         }
         public static void Open()
         {
