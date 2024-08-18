@@ -28,6 +28,7 @@
     <PackageReference Include="NUnit.Allure" Version="1.2.1.1" />
     <PackageReference Include="NUnit.Analyzers" Version="3.9.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
+    <PackageReference Include="RestSharp" Version="111.4.1" />
     <PackageReference Include="Selenium.Support" Version="4.23.0" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="127.0.6533.9900" />
     <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />

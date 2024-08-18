@@ -6,12 +6,10 @@ namespace Dip.Test.API
 {
     [TestFixture]
     [AllureNUnit]
-    [AllureSuite("Тестирование запросов авторизации в API.")]
     internal class LoginTest
     {
         [AllureOwner("Терентьева Анна")]
         [AllureName("Отправка данных юзера на сервер, чтобы получить токен авторизации.")]
-        [AllureSubSuite("fnfhbf")]
         [TestCase("terenteva1999@yandex.ru", "123456Ana")]
         public void PostUserCorrect(string user, string password)
         {
@@ -58,11 +56,13 @@ namespace Dip.Test.API
             {
                 requestMessage.Headers.Add("Cookie", headersInfo.cookie);
                 requestMessage.Headers.Add("x-csrf-token", headersInfo.crft_token);
+                requestMessage.Headers.Add("auth-token", headersInfo.auth_token);
 
                 // Отправляем запрос
                 var response = client.SendAsync(requestMessage).Result;
                 Assert.That((int)response.StatusCode, Is.EqualTo(401));
             }
         }
+
     }
 }
