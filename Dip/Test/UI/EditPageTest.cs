@@ -7,7 +7,7 @@ namespace Dip.Test.UI
     [AllureNUnit]
     internal class EditPageTest: BasePageTest
     {
-      
+ 
         [TestCase("terenteva1999@yandex.ru", "123456Ana", "{text}")]
         [AllureName("Cоздание новой записи в дневнике.")]
         [AllureOwner("Терентьева Анна")]

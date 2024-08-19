@@ -1,5 +1,5 @@
-﻿using Dip.Page;
-using NUnit.Allure.Attributes;
+﻿using Allure.NUnit.Attributes;
+using Dip.Page;
 using NUnit.Allure.Core;
 
 namespace Dip.Test.UI
@@ -17,9 +17,9 @@ namespace Dip.Test.UI
             MainPage.OpenPage();
             MainPage.ClickByLicense();
             LoginPage.Login(email, pass);
-            Assert.IsTrue(LicensePage.IsPageOpen());
+            Assert.IsTrue(LicensePage.IsPageOpen());  
             Assert.IsTrue(true);
-            //Assert.That(LicensePage.PayPalPaymentSub(), Is.EqualTo("www.paypal.com"));
+           // Assert.That(LicensePage.PayPalPaymentSub(), Is.EqualTo("www.paypal.com"));
         }
         [TestCase("terenteva1999@yandex.ru", "123456Ana")]
         [AllureName("Оформление подписки на лицензию через Дебетовую или кредитную карту.")]
@@ -31,7 +31,7 @@ namespace Dip.Test.UI
             LoginPage.Login(email, pass);
             Assert.IsTrue(LicensePage.IsPageOpen());
             Assert.IsTrue(true);
-            //Assert.That(LicensePage.DebetCardPaymentSub(), Is.EqualTo("www.paypal.com"));
+           // Assert.That(LicensePage.DebetCardPaymentSub(), Is.EqualTo("www.paypal.com"));
         }
        
         [TestCase("terenteva1999@yandex.ru", "123456Ana")]
@@ -57,9 +57,8 @@ namespace Dip.Test.UI
             MainPage.ClickByLicense();
             LoginPage.Login(email, pass);
             Assert.IsTrue(LicensePage.IsPageOpen());
-            LicensePage.ClickOneOffPay();
-            Assert.IsTrue(true);
-           // Assert.That(LicensePage.DebetCardPaymentOneOff(), Is.EqualTo("www.paypal.com"));
+            LicensePage.ClickOneOffPay(); Assert.IsTrue(true);
+          //  Assert.That(LicensePage.DebetCardPaymentOneOff(), Is.EqualTo("www.paypal.com"));
         }
     }
 }
