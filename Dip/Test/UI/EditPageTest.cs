@@ -4,12 +4,13 @@ using NUnit.Allure.Core;
 
 namespace Dip.Test.UI
 {
+    [TestFixture]
     [AllureNUnit]
     internal class EditPageTest: BasePageTest
     {
- 
+   
         [TestCase("terenteva1999@yandex.ru", "123456Ana", "{text}")]
-        [AllureName("Cоздание новой записи в дневнике.")]
+        [AllureName(" Create new notes.")]
         [AllureOwner("Терентьева Анна")]
         public void TestAddNewNotes(string name, string pass, string text)
         {
@@ -25,7 +26,7 @@ namespace Dip.Test.UI
         }
       
         [TestCase("terenteva1999@yandex.ru", "123456Ana", "{text}", "{new_tag}")]
-        [AllureName("Добавление тега к заметке в дневнике.")]
+        [AllureName("add new teg тега к заметке в дневнике.")]
         [AllureOwner("Терентьева Анна")]
 
         public void TestAddNewTags(string name, string pass, string text, string new_tag)

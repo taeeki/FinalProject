@@ -4,6 +4,7 @@ using NUnit.Allure.Core;
 
 namespace Dip.Test.UI
 {
+    [TestFixture]
     [AllureNUnit] 
     internal class DiaryPageTest : BasePageTest
     {
