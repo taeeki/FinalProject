@@ -10,7 +10,6 @@ namespace Dip.Page
         private const string registerEmailXPath = "//*[@id=\"registration_email\"]";
         private const string registerPassXPath = "//*[@id=\"registration_password\"]";
         private const string registerPassDoubleXPath = "//*[@id=\"registration_password_confirmation\"]";
-        private const string hindXpath = "//*[@id=\"registration_password_hint\"]";
         private const string PrivacyPolicyXPath = "//a[@href=\"/en/privacy-policy\" and @target=\"_blank\"]";
         private const string PrivacyPolicyTextXPath = "//h1[contains(text(), \"Privacy policy\")]";
         private const string TermsOfUseXPath = "//a[@href=\"/en/terms-of-use\" and @target=\"_blank\"]";

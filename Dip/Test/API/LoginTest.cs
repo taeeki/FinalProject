@@ -7,9 +7,9 @@ namespace Dip.Test.API
     [TestFixture]
     [AllureNUnit]
     internal class LoginTest
-    {
-        [AllureOwner("Терентьева Анна")]
+    {    
         [AllureName("Отправка данных юзера на сервер, чтобы получить токен авторизации.")]
+        [AllureOwner("Терентьева Анна")]
         [TestCase("terenteva1999@yandex.ru", "123456Ana")]
         public void PostUserCorrect(string user, string password)
         {

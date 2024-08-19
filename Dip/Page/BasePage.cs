@@ -1,7 +1,5 @@
 ﻿using Dip.Factories;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using OpenQA.Selenium.Chrome;
 namespace Dip.Page
 {
     public abstract class BasePage

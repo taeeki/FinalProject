@@ -7,9 +7,10 @@ namespace Dip.Test.UI
     [AllureNUnit]
     internal class EditPageTest: BasePageTest
     {
-        [AllureOwner("Терентьева Анна")]
-        [AllureName("Cоздание новой записи в дневнике.")]
+      
         [TestCase("terenteva1999@yandex.ru", "123456Ana", "{text}")]
+        [AllureName("Cоздание новой записи в дневнике.")]
+        [AllureOwner("Терентьева Анна")]
         public void TestAddNewNotes(string name, string pass, string text)
         {
             text = "Hello World";
@@ -22,9 +23,10 @@ namespace Dip.Test.UI
             EditPage.BackHome();
             Assert.IsTrue(DiaryPage.IsPageOpen());      
         }
-        [AllureOwner("Терентьева Анна")]
-        [AllureName("Добавление тега к заметке в дневнике.")]
+      
         [TestCase("terenteva1999@yandex.ru", "123456Ana", "{text}", "{new_tag}")]
+        [AllureName("Добавление тега к заметке в дневнике.")]
+        [AllureOwner("Терентьева Анна")]
 
         public void TestAddNewTags(string name, string pass, string text, string new_tag)
         {
@@ -38,9 +40,10 @@ namespace Dip.Test.UI
             EditPage.AddTag(new_tag);
             Assert.That(new_tag, Is.EqualTo(EditPage.AssignedTags()));
         }
-        [AllureOwner("Терентьева Анна")]
-        [AllureName("Добавление тега, который уже был ранее использован, к записи в дневнике.")]
+      
         [TestCase("terenteva1999@yandex.ru", "123456Ana", "{text}", "{new_tag}")]
+        [AllureName("Добавление тега, который уже был ранее использован, к записи в дневнике.")]
+        [AllureOwner("Терентьева Анна")]
         public void TestFindTegsWhichAlreadyExist(string name, string pass, string text, string new_tag)
         {
             text = "Поиск";
@@ -54,9 +57,10 @@ namespace Dip.Test.UI
             EditPage.ClickFindTag();
             Assert.That(new_tag, Is.EqualTo(EditPage.AssignedTags()));
         }
-        [AllureOwner("Терентьева Анна")]
-        [AllureName("Загрузка изображения в новую запись с компьютера.")]
+       
         [TestCase("terenteva1999@yandex.ru", "123456Ana", "{text}")]
+        [AllureName("Загрузка изображения в новую запись с компьютера.")]
+        [AllureOwner("Терентьева Анна")]
         public void TestLoadingPictureDesktop(string name, string pass, string text)
         {
             text = "Добавили изображение с компьютера.";
@@ -71,9 +75,10 @@ namespace Dip.Test.UI
             EditPage.Save();
             Assert.IsTrue(EditPage.IsPageOpen());
         }
-        [AllureOwner("Терентьева Анна")]
-        [AllureName("Загрузка изображения с просторов интернета .")]
+    
         [TestCase("terenteva1999@yandex.ru", "123456Ana", "{text}", "https://russkiiyazyk.ru/wp-content/uploads/2018/06/Kartinka.jpg")]
+        [AllureName("Загрузка изображения с просторов интернета .")]
+        [AllureOwner("Терентьева Анна")]
         public void TestLoadingPictureURL(string name, string pass, string text, string url)
         {
             text = "Загружаем картинку из интернета";
@@ -87,9 +92,10 @@ namespace Dip.Test.UI
             EditPage.Save();
 
         }
-        [AllureOwner("Терентьева Анна")]
-        [AllureName("Заметка с использованием картинок и других редакций.")]
+      
         [TestCase("terenteva1999@yandex.ru", "123456Ana", "https://russian.korea.net/upload/content/image/506fac08ad3f4ad6b302659399a2c82b_20230613104829.jpg")]
+        [AllureName("Заметка с использованием картинок и других редакций.")]
+        [AllureOwner("Терентьева Анна")]
         public void AddNewNotesWPictureAndTextEdit(string name, string pass, string url)
         {
             string text = "Добавление изображения из интернета";
@@ -105,9 +111,10 @@ namespace Dip.Test.UI
             EditPage.AddNewLine();
             Assert.IsTrue(EditPage.IsPageOpen());
         }
-        [AllureOwner("Терентьева Анна")]
-        [AllureName("Удаление заметки из дневника.")]
+      
         [TestCase("terenteva1999@yandex.ru", "123456Ana")]
+        [AllureName("Удаление заметки из дневника.")]
+        [AllureOwner("Терентьева Анна")]
         public void DeleteNotes(string name, string pass)
         {
             string text = "Думаю добавить картинку из интернета";
@@ -119,10 +126,11 @@ namespace Dip.Test.UI
             EditPage.DeleteNotes();
             Assert.IsTrue(EditPage.IsPageOpen());
         }
-        [AllureOwner("Терентьева Анна")]
-        [AllureName("Редактирование текстовой заметки из дневника.")]
-        [Description("Здесь происходит изменение текста в редакторе: жирный, курсив, подчеркнутый. ")]
+      
         [TestCase("terenteva1999@yandex.ru", "123456Ana")]
+        [AllureName("Редактирование текстовой заметки из дневника.")]
+        [AllureOwner("Терентьева Анна")]
+        [Description("Здесь происходит изменение текста в редакторе: жирный, курсив, подчеркнутый. ")]
         public void EditNotesText(string name, string pass)
         {
             LoginPage.Open();
@@ -139,10 +147,11 @@ namespace Dip.Test.UI
             EditPage.BackHome();
             Assert.IsTrue(EditPage.IsPageOpen());
         }
-        [AllureOwner("Терентьева Анна")]
-        [AllureName("Редактирование текстовой заметки из дневника.")]
-        [Description("Здесь происходит изменение текста в редакторе: жирный, курсив, подчеркнутый. ")]
+      
         [TestCase("terenteva1999@yandex.ru", "123456Ana")]
+        [AllureName("Редактирование текстовой заметки из дневника.")]
+        [AllureOwner("Терентьева Анна")]
+        [Description("Здесь происходит изменение текста в редакторе: жирный, курсив, подчеркнутый. ")]
         public void EditNotesTextWithListed(string name, string pass)
         {
             LoginPage.Open();
@@ -170,10 +179,11 @@ namespace Dip.Test.UI
             EditPage.BackHome();
             Assert.IsTrue(EditPage.IsPageOpen());
         }
-        [AllureOwner("Терентьева Анна")]
-        [AllureName("Редактирование текстовой заметки из дневника.")]
-        [Description("Здесь происходит изменение текста в редакторе: жирный, курсив, подчеркнутый. ")]
+      
         [TestCase("terenteva1999@yandex.ru", "123456Ana")]
+        [AllureName("Редактирование текстовой заметки из дневника.")]
+        [AllureOwner("Терентьева Анна")]
+        [Description("Здесь происходит изменение текста в редакторе: жирный, курсив, подчеркнутый. ")]
         public void EmodjiTesting(string name, string pass)
         {
             LoginPage.Open();
@@ -188,8 +198,10 @@ namespace Dip.Test.UI
             EditPage.Save();
             Assert.IsTrue(EditPage.IsPageOpen());
         }
-        [AllureName("Удаление всех записей в дневнике.")]
+   
         [TestCase("terenteva1999@yandex.ru", "123456Ana")]
+        [AllureName("Удаление всех записей в дневнике.")]
+        [AllureOwner("Терентьева Анна")]
         public void AllNotesDelete(string name, string pass)
         {
             LoginPage.Open();
@@ -200,8 +212,10 @@ namespace Dip.Test.UI
             DiaryPage.ClickDeleteAllNotes();
             Assert.IsTrue(DiaryPage.IsPageOpen());         
         }
-        [AllureName("Вывод на печать все заметки из дневника.")]
+        
         [TestCase("terenteva1999@yandex.ru", "123456Ana")]
+        [AllureName("Вывод на печать все заметки из дневника.")]
+        [AllureOwner("Терентьева Анна")]
         public void PrinterAllNotes(string name, string pass)
         {
             LoginPage.Open();
@@ -211,8 +225,10 @@ namespace Dip.Test.UI
             Assert.IsTrue(DiaryPage.EnabledPrinter());
             Assert.That(DiaryPage.PrinterAllNotes(), Is.EqualTo("https://monkkee.com/print_template"));
            }
-          [AllureName("Вывод на печать одну заметку из дневника.")]
+        
         [TestCase("terenteva1999@yandex.ru", "123456Ana")]
+        [AllureName("Вывод на печать одну заметку из дневника.")]
+        [AllureOwner("Терентьева Анна")]
         public void PrinterOneNotes(string name, string pass)
         {
             LoginPage.Open();

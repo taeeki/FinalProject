@@ -1,5 +1,4 @@
 ﻿using Dip.Helper;
-using Microsoft.Graph.Models;
 using Newtonsoft.Json.Linq;
 using NUnit.Allure.Attributes;
 using NUnit.Allure.Core;

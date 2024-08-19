@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using System;
 using Dip.Factories;
 using SeleniumExtras.WaitHelpers;
 
@@ -24,9 +23,7 @@ namespace Dip.Page
         }
 
         public static int CountingTags()
-        {
-            /*List<WebElement> list = new List<WebElement>();
-            list = (List<WebElement>)Driver.GetDriver().FindElement(By.XPath(countTags));*/
+        {        
             int recordsCount = Driver.GetDriver().FindElement(By.XPath(countTags)).FindElements(By.XPath(countTags)).Count;
             return recordsCount;
         }

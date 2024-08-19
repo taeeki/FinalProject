@@ -7,8 +7,10 @@ namespace Dip.Test.UI
     [AllureNUnit] 
     internal class DiaryPageTest : BasePageTest
     {
-        [AllureName("Выход из аккаунта.")]
+       
         [TestCase("terenteva1999@yandex.ru", "123456Ana")]
+        [AllureName("Выход из аккаунта.")]
+        [AllureOwner("Терентьева Анна")]
         public void ClickLogOut(string user, string pass)
         {
             LoginPage.Open();
@@ -17,8 +19,10 @@ namespace Dip.Test.UI
             DiaryPage.ClickLogOutButton();
             Assert.IsTrue(LoginPage.IsPageOpen());
         }
-        [AllureName("Переход в настройки.")]
+       
         [TestCase("terenteva1999@yandex.ru", "123456Ana")]
+        [AllureName("Переход в настройки.")]
+        [AllureOwner("Терентьева Анна")]
         public void ClickSetting(string user, string pass)
         {
             LoginPage.Open();
@@ -27,9 +31,11 @@ namespace Dip.Test.UI
             DiaryPage.ClickSettingButton();
             Assert.IsTrue(SettingPage.IsPageOpen());
         }
-        [AllureName("Поиск информации по сайту с заданным критерием.")]
+       
         [TestCase("terenteva1999@yandex.ru", "123456Ana", "utyryr")]
         [TestCase("terenteva1999@yandex.ru", "123456Ana", "World")]
+        [AllureName("Поиск информации по сайту с заданным критерием.")]
+        [AllureOwner("Терентьева Анна")]
         public void SearchTextFromDiary(string name, string pass, string text)
         {
             LoginPage.Open();
@@ -42,8 +48,10 @@ namespace Dip.Test.UI
                 Assert.IsFalse(false, "Поиск произведен, по такому поиску есть записи.");
             DiaryPage.ResetSearch();
         }
-        [AllureName("Настройки тегов в дневнике.")]
+   
         [TestCase("terenteva1999@yandex.ru", "123456Ana")]
+        [AllureName("Настройки тегов в дневнике.")]
+        [AllureOwner("Терентьева Анна")]
         public void GoToPageTags(string name, string pass)
         {
             LoginPage.Open();
@@ -52,8 +60,10 @@ namespace Dip.Test.UI
             DiaryPage.ClickToGoManageTags();
             Assert.IsTrue(TagsPage.IsOpen());
         }
-        [AllureName("Установка даты в дневнике.")]
+ 
         [TestCase("terenteva1999@yandex.ru", "123456Ana")]
+        [AllureName("Установка даты в дневнике.")]
+        [AllureOwner("Терентьева Анна")]
         public void SetDate(string name, string pass)
         {
             LoginPage.Open();

@@ -1,9 +1,6 @@
 ﻿using Dip.Factories;
-using Microsoft.Graph.Models;
 using OpenQA.Selenium;
 using SeleniumExtras.WaitHelpers;
-using System.Linq;
-using static HarmonyLib.Code;
 
 namespace Dip.Page
 {

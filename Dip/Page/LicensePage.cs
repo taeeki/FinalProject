@@ -1,5 +1,4 @@
 ﻿using Dip.Factories;
-using Microsoft.Graph.Models;
 using OpenQA.Selenium;
 using SeleniumExtras.WaitHelpers;
 

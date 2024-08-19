@@ -8,26 +8,29 @@ namespace Dip.Test.UI
     internal class LoginPageTest : BasePageTest
     {
         [Test]
+        [AllureOwner("Терентьева Анна")]
         public void TestThatPageNavigationOpen()
         {
             LoginPage.Open();
             Assert.IsTrue(LoginPage.IsPageOpen());
         }
-        [AllureOwner("Терентьева Анна")]
-        [AllureName("Успешная авторизация на сайте.")]
+      
         [TestCase("terenteva1999@yandex.ru", "123456Ana")]
         [TestCase("taeeeki", "123456Ana")]
+        [AllureOwner("Терентьева Анна")]
+        [AllureName("Успешная авторизация на сайте.")]
         public void CorrectAuth(string user, string pass)
         {
             LoginPage.Open();
             LoginPage.Login(user, pass);
             Assert.IsTrue(DiaryPage.IsPageOpen());
         }
-        [AllureOwner("Терентьева Анна")]
-        [AllureName("Некорректная авторизация на сайте.")]
+  
         [TestCase("frgjjgnt", "fbf")]
         [TestCase("terenteva1999@open.ru", "1125")]
         [TestCase("terenteva1999@yandex.ru", "576789")]
+        [AllureName("Некорректная авторизация на сайте.")]
+        [AllureOwner("Терентьева Анна")]
         public void UnCorrectLogin(string user, string pass)
         {
             LoginPage.Open();
@@ -35,9 +38,10 @@ namespace Dip.Test.UI
             var textresult = LoginPage.GetErrorMessage();
             Assert.That(textresult, Is.EqualTo("Login failed"));
         }
-        [AllureOwner("Терентьева Анна")]
-        [AllureName("Авторизация с незаполненными полями логина и пароля.")]
+
         [TestCase("", "")]
+        [AllureName("Авторизация с незаполненными полями логина и пароля.")]
+        [AllureOwner("Терентьева Анна")]
         public void AllParamIsNullLogin(string user, string pass)
         {
             LoginPage.Open();
@@ -45,18 +49,20 @@ namespace Dip.Test.UI
             if (LoginPage.GetMandatoryErrorLogin() == "Mandatory field" && LoginPage.GetMandatoryErrorPassword() == "Mandatory field")
                 Assert.IsTrue(true);
          }
-        [AllureOwner("Терентьева Анна")]
-        [AllureName("Авторизация с незаполненными полем пароля.")]
+      
         [TestCase("gfbhfgthn", "")]
+        [AllureName("Авторизация с незаполненными полем пароля.")]
+        [AllureOwner("Терентьева Анна")]
         public void PassIsNullLoginIsNotNull(string user, string pass)
         {
             LoginPage.Open();
             LoginPage.Login(user, pass);
             Assert.That(LoginPage.GetMandatoryErrorPassword(), Is.EqualTo("Mandatory field"));
         }
-        [AllureOwner("Терентьева Анна")]
-        [AllureName("Авторизация с незаполненными полем пароля.")]
+    
         [TestCase("", "арнош")]
+        [AllureName("Авторизация с незаполненными полем пароля.")]
+        [AllureOwner("Терентьева Анна")]
         public void LoginIsNullPassIsNotNull(string user, string pass)
         {
             LoginPage.Open();

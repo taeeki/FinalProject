@@ -8,27 +8,30 @@ namespace Dip.Test.UI
     [AllureNUnit]
     internal class MainPageTest : BasePageTest
     {
-        [AllureOwner("Терентьева Анна")]
-        [AllureName("Переход на страницу авторизации.")]
+       
         [Test]
+        [AllureName("Переход на страницу авторизации.")]
+        [AllureOwner("Терентьева Анна")]
         public void ClickLogIn()
         {
             MainPage.OpenPage();
             MainPage.ClickToLogin();
             Assert.IsTrue(LoginPage.IsPageOpen());
         }
-        [AllureOwner("Терентьева Анна")]
-        [AllureName("Проверка перехода на страницу с покупкой лицензии.")]
+       
         [Test]
+        [AllureName("Проверка перехода на страницу с покупкой лицензии.")]
+        [AllureOwner("Терентьева Анна")]
         public void ClickLicense()
         {
             MainPage.OpenPage();
             MainPage.ClickByLicense();
             Assert.IsTrue(LoginPage.IsPageOpen());
         }
-        [AllureOwner("Терентьева Анна")]
-        [AllureName("Переход на страницу регистрации на сайте.")]
+      
         [Test]
+        [AllureName("Переход на страницу регистрации на сайте.")]
+        [AllureOwner("Терентьева Анна")]
         public void ClickRegister()
         {
             MainPage.OpenPage();
