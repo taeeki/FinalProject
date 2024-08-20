@@ -5,7 +5,7 @@ namespace Dip.Test.UI
 {
     [TestFixture]
     [AllureNUnit]
-    internal class LoginPageTest : BasePageTest
+    public class LoginPageTest : BasePageTest
     {
         [Test]
         [AllureOwner("Терентьева Анна")]

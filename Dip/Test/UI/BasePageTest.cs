@@ -4,7 +4,7 @@ namespace Dip.Test.UI
 
 {
     //    [NonParallelizable]
-    internal class BasePageTest
+    public class BasePageTest
     {
         [SetUp]
         public void Setup()

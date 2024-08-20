@@ -1,8 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Chrome;
-using System;
-using System.Collections.Generic;
 namespace Dip.Factories
 {
     internal class Driver
@@ -21,9 +19,6 @@ namespace Dip.Factories
              _wait = null;
         }
         private static IWebDriver SetupDriver() => _driver ??= new ChromeDriver();
-        public static void Open()
-        {
-            _driver.Navigate().GoToUrl("");
-        }
+      
     }
 }

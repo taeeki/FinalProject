@@ -6,7 +6,7 @@ namespace Dip.Test.UI
 {
     [TestFixture]
     [AllureNUnit] 
-    internal class DiaryPageTest : BasePageTest
+    public class DiaryPageTest : BasePageTest
     {
        
         [TestCase("terenteva1999@yandex.ru", "123456Ana")]

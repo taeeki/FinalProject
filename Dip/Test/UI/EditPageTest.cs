@@ -6,7 +6,7 @@ namespace Dip.Test.UI
 {
     [TestFixture]
     [AllureNUnit]
-    internal class EditPageTest: BasePageTest
+    public class EditPageTest: BasePageTest
     {
    
         [TestCase("terenteva1999@yandex.ru", "123456Ana", "{text}")]
@@ -91,7 +91,6 @@ namespace Dip.Test.UI
             EditPage.AddNewLine();
             EditPage.GetPictureFileURL(url);
             EditPage.Save();
-
         }
       
         [TestCase("terenteva1999@yandex.ru", "123456Ana", "https://russian.korea.net/upload/content/image/506fac08ad3f4ad6b302659399a2c82b_20230613104829.jpg")]

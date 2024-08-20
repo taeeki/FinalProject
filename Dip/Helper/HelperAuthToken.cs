@@ -14,7 +14,9 @@ namespace Dip.Helper
             var client = new HttpClient();
             var response1 = client.GetAsync($"{baseurl}app/#/").Result;
             var responseContent1 = response1.Content.ReadAsStringAsync().Result;
+          
             //вычленяем серт из html-страницы, поскольку без него не отправить запросы в апи 
+           
             var csrfToken = Regex.Match(responseContent1, "<meta\\s+name=\"csrf-token\"\\s+content=\"([^\"]*)\"").Groups[1].Value;
 
             response1.Headers.TryGetValues("Set-Cookie", out var cookies);

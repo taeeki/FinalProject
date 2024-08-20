@@ -1,11 +1,7 @@
 ﻿using Dip.Factories;
-using Microsoft.Graph.Models;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
-using System.Security.Cryptography;
-using System.Xml.Linq;
 namespace Dip.Page
 {
     internal class EditPage:BasePage

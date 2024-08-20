@@ -6,7 +6,7 @@ namespace Dip.Test.UI
 {
     [TestFixture]
     [AllureNUnit]
-    internal class MainPageTest : BasePageTest
+    public class MainPageTest : BasePageTest
     {
        
         [Test]

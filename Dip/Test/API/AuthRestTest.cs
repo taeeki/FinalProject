@@ -8,7 +8,7 @@ namespace Dip.Test.API
 {
     [TestFixture]
     [AllureNUnit]
-    internal class AuthRestTest
+    public class AuthRestTest
     {
         private const string BaseUrl = "https://monkkee.com/api";
       
